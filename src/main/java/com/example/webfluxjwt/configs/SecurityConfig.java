@@ -34,7 +34,8 @@ public class SecurityConfig {
     public SecurityWebFilterChain securityWebFilterChain(ServerHttpSecurity http) {
         return http
                 .authorizeExchange(auth -> {
-                    auth.anyExchange().permitAll();
+                    auth.pathMatchers("/login").permitAll();
+                    auth.anyExchange().authenticated();
                 })
                 .httpBasic().disable()
                 .formLogin().disable()
