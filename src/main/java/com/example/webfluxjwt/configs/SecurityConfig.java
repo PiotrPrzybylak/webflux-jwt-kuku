@@ -24,7 +24,7 @@ public class SecurityConfig {
     public MapReactiveUserDetailsService userDetailsService(PasswordEncoder encoder) {
         UserDetails user = User.builder()
                 .username("kuku")
-                .password("kuku")
+                .password(encoder.encode("kuku"))
                 .roles("USER")
                 .build();
         return new MapReactiveUserDetailsService(user);
